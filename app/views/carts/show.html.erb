@@ -4,6 +4,9 @@
     <h1>My Cart</h1>
   </header>
 
+   <% if enhanced_cart.length === 0 %>
+    <p>Your cart is empty. <%= link_to "Return to the homepage", :root %> to continue shopping.</p>
+  <% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -25,7 +28,7 @@
             TOTAL:
           </th>
           <th>
-            $<%= number_with_precision(cart_subtotal_cents / 100.00, precision: 2) %>
+            <%= humanized_money_with_symbol cart_subtotal_cents / 100.00 %>
           </th>
         </tr>
       </tfoot>
@@ -48,5 +51,5 @@
       <% end %>
     </div>
   </div>
-
+      <% end %>
 </section>
